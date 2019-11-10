@@ -8,13 +8,6 @@ class RenderComponent extends GameComponent {
         this.image = image;
         this.width = image.width;
         this.height = image.height;
-        this.scale = 1;
-
-    }
-
-    update(delta){
-        this.width = this.image.width*this.scale;
-        this.height = this.image.height*this.scale;
 
     }
 
