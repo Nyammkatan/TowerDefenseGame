@@ -45,7 +45,7 @@ const s = (p) => {
     };
 
     p.setup = function() {
-        let canvas = p.createCanvas(960, 720);
+        let canvas = p.createCanvas(p.gameWidth, p.gameHeight);
 
         lastTime = (new Date()).getTime();
         currTime = 0;
