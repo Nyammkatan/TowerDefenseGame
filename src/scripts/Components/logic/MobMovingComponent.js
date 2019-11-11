@@ -13,7 +13,7 @@ class MobMovingComponent extends GameComponent {
         this.startTime = 0;
         this.endTime = 0;
         this.startLocation = {i:0, j:0};
-        this.endLocation = {i:-1, j:18};
+        this.endLocation = {i:-1, j:17};
 
         this.nextDestination();
 
@@ -38,7 +38,7 @@ class MobMovingComponent extends GameComponent {
 
     update(delta){
         let time = this.host.game.gameTime;
-        let shift = (this.tileSize-this.bodyComponent.w)/2;
+        let shift = (this.tileSize*2-this.bodyComponent.w)/2;
         this.bodyComponent.x = this.host.game.linearInterpolation(this.startLocation.j*this.tileSize, this.endLocation.j*this.tileSize,
                                                                     this.startTime, time, this.endTime)+shift;
         this.bodyComponent.y = this.host.game.linearInterpolation(this.startLocation.i*this.tileSize, this.endLocation.i*this.tileSize,

@@ -23,6 +23,9 @@ class TilemapRenderComponent extends GameComponent {
                     case 2:
                         p.fill(0);
                         break;
+                    case 3:
+                        p.fill(100, 50, 0);
+                        break;
                 }
                 p.rect(j*this.tileSize, i*this.tileSize, this.tileSize, this.tileSize);    
 

@@ -23,7 +23,7 @@ class WaveMasterLogicComponent extends GameComponent {
         this.spawningState = 0; //0 - wait | 1 - spawning
 
         this.timerWaveStart = 0;
-        this.timeToStartWave = 4;
+        this.timeToStartWave = 0.5;
 
         this.timerMobSpawn = 0;
         this.timeToSpawnMob = 1.2;
@@ -36,7 +36,7 @@ class WaveMasterLogicComponent extends GameComponent {
 
     findRoute(map){
         let dvalue = 0;
-        let start = {i:0, j:18, d:dvalue};
+        let start = {i:0, j:17, d:dvalue};
         let end = {i:14, j:8};
         let marked = [];
         let path = [];
@@ -114,7 +114,7 @@ class WaveMasterLogicComponent extends GameComponent {
         let mobType = this.currentWaveToSpawn.shift();
         //let mob = new mobType(this.host.game, x, y, ro)
         let size = this.tilemap.tilemapContainerComponent.tileSize;
-        let test = new Mob(this.host.game, 18*size, -size, 30, size, this.route, 0.25, undefined, 100);
+        let test = new Mob(this.host.game, 18*size, -size, 70, size, this.route, 0.25, undefined, 100);
         this.host.addChild(test);
 
     }
