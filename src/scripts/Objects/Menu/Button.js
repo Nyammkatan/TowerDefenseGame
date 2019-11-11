@@ -1,5 +1,5 @@
 import GameObject from "../GameObject";
-import BodyComponent from "../../Components/physics/BodyComponent";
+import BodyComponent from "../../Components/logic/BodyComponent";
 import RenderComponent from "../../Components/render/RenderComponent";
 
 class Button extends GameObject {

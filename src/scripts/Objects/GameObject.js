@@ -4,6 +4,7 @@ class GameObject {
         this.game = game;
         this.components = [];
         this.kids = [];
+        this.parent = undefined;
 
     }
 
@@ -34,6 +35,12 @@ class GameObject {
 
     addChild(c){
         this.kids.push(c);
+        c.parent = this;
+
+    }
+
+    removeFromParent(){
+        this.parent.removeChild(this);
 
     }
 

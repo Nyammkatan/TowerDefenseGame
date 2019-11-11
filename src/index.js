@@ -1,5 +1,6 @@
 import Game from "./scripts/Game";
 import MenuState from "./scripts/States/MenuState";
+import GameState from "./scripts/States/GameState";
 
 let game;
 
@@ -51,7 +52,7 @@ const s = (p) => {
         currTime = 0;
 
         game = new Game(p);
-        game.setState(new MenuState(game));
+        game.setState(new GameState(game));
     
     };
     
