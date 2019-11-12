@@ -22,6 +22,7 @@ class TilemapContainerComponent extends GameComponent {
             [0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         ];
         this.tileSize = 40;
+        this.host.game.tileSize = 40;
 
     }
 
