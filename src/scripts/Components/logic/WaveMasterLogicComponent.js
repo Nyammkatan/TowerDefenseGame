@@ -111,10 +111,10 @@ class WaveMasterLogicComponent extends GameComponent {
     }
 
     spawnMob(){
-        let mobType = this.currentWaveToSpawn.shift();
+        let MobClass = this.currentWaveToSpawn.shift();
         //let mob = new mobType(this.host.game, x, y, ro)
         let size = this.tilemap.tilemapContainerComponent.tileSize;
-        let test = new Mob(this.host.game, 18*size, -size, 70, size, this.route, 0.25, undefined, 100);
+        let test = new MobClass(this.host.game, 18*size, -size, size, this.route);
         this.host.addChild(test);
 
     }

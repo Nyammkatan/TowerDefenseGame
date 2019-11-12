@@ -2,6 +2,7 @@ import GameObject from "../../GameObject";
 import BodyComponent from "../../../Components/logic/BodyComponent";
 import GameComponent from "../../../Components/GameComponent";
 import MobMovingComponent from "../../../Components/logic/MobMovingComponent";
+import RenderComponent from "../../../Components/render/RenderComponent";
 
 class Mob extends GameObject {
 
@@ -14,12 +15,7 @@ class Mob extends GameObject {
         this.bodyComponent = new BodyComponent(this, x, y, size, size);
         this.addChild(this.bodyComponent);
 
-        this.renderComponent = new GameComponent(this);
-        this.renderComponent.draw = ()=> {
-            game.p.fill(255, 0, 0);
-            game.p.rect(this.bodyComponent.x, this.bodyComponent.y, this.bodyComponent.w, this.bodyComponent.h);
-
-        };
+        this.renderComponent = new RenderComponent(this, this.bodyComponent, null);
         this.addComponent(this.renderComponent);
 
         let mobMovingComponent = new MobMovingComponent(this, this.bodyComponent, route, tileSize, turnTime);

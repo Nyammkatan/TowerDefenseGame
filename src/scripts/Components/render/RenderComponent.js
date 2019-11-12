@@ -6,12 +6,28 @@ class RenderComponent extends GameComponent {
         super(host);
         this.bodyComponent = bodyComponent;
         this.image = image;
-        this.width = image.width;
-        this.height = image.height;
+        if (this.image != null){
+            this.width = image.width;
+            this.height = image.height;
+
+        }
+    }
+
+    setImage(image){
+        if (this.image != null){
+            this.width = image.width;
+            this.height = image.height;
+
+        }
+        this.image = image;
 
     }
 
     draw(){
+        if (this.image == null){
+            this.host.game.p.fill(255, 0, 0);
+            this.host.game.p.rect(this.bodyComponent.x, this.bodyComponent.y, this.bodyComponent.w, this.bodyComponent.h);
+        } else
         this.host.game.p.image(this.image, this.bodyComponent.x, this.bodyComponent.y, this.width, this.height);
 
     }
