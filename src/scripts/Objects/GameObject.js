@@ -1,3 +1,5 @@
+import BuffsComponent from "../Components/logic/Buffs/BuffsComponent";
+
 class GameObject {
 
     constructor(game){
@@ -5,6 +7,10 @@ class GameObject {
         this.components = [];
         this.kids = [];
         this.parent = undefined;
+
+        //buffs
+        this.buffsComponent = new BuffsComponent(this);
+        this.attachments = {};
 
     }
 

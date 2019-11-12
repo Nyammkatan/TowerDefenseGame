@@ -52,6 +52,7 @@ const s = (p) => {
         currTime = 0;
 
         game = new Game(p);
+        window.mainGame = game;
         game.setState(new GameState(game));
     
     };
