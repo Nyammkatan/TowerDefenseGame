@@ -9,7 +9,7 @@ class Mob extends GameObject {
     constructor(game, x, y, size, tileSize, route, turnTime, resist, hp){
         super(game);
         this.route = route;
-        this.hp = hp; //NASHE ISKLUCHENIE TOLKO NA ETOT RAZ. tak chto raduysya Radomyr.
+        this.hp = hp; 
         this.resist = resist;
 
         this.bodyComponent = new BodyComponent(this, x, y, size, size);

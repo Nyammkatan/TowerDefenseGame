@@ -41,5 +41,12 @@ class BodyComponent extends GameComponent {
 
     }
 
+    distanceTo(bodyComponent){
+        let k1 = Math.abs(bodyComponent.x-this.x);
+        let k2 = Math.abs(bodyComponent.y-this.y);
+        return Math.sqrt(k1*k1 + k2*k2);
+        
+    }
+
 }
 export default BodyComponent;
