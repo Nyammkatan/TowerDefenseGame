@@ -63,6 +63,7 @@ const s = (p) => {
 
         p.background(0);
 
+        if (delta < 0.2)
         game.update(delta);
         game.draw(p);
         
