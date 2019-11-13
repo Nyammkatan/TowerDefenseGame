@@ -32,6 +32,7 @@ class Game {
 
     draw(){
         this.state.draw();
+        this.state.drawUpper(1);
 
     }
 

@@ -60,5 +60,13 @@ class State {
 
     }
 
+    drawUpper(index){
+        for (let i=0; i < this.gameObjects.length; i++){
+            this.gameObjects[i].drawUpper(index);
+
+        }
+
+    }
+
 }
 export default State;

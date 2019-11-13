@@ -2,6 +2,7 @@ class GameComponent {
 
     constructor(host){
         this.host = host;
+        this.drawIndex = 0;
 
     }
 
@@ -10,6 +11,10 @@ class GameComponent {
     }
 
     draw(){
+
+    }
+
+    drawUpper(index){
 
     }
 

@@ -34,6 +34,17 @@ class GameObject {
 
     }
 
+    drawUpper(index){
+        for (let i=0; i < this.components.length; i++){
+            this.components[i].drawUpper(index);
+        }
+        for (let i=0; i < this.kids.length; i++){
+            this.kids[i].drawUpper(index);
+        }
+
+    }
+
+
     addComponent(c){
         this.components.push(c);
 
