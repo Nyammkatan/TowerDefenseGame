@@ -5,6 +5,7 @@ class BuffComponent extends GameComponent {
     constructor(host, type){
         super(host);
         this.type = type;
+        this.bufflvl = 1;
 
     }
 

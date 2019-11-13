@@ -10,14 +10,25 @@ class BuffsComponent extends GameComponent {
 
     }
 
-    applyBuff(type){
-        if (this.buffs[type] !== true){
-            let buffComponentClass = this.buffClasses[type];
-            let component = new buffComponentClass(this.host);
-            this.host.attachments[type] = component;
-            this.host.addComponent(component);
-            component.on();
-            this.buffs[type] = true;
+    applyBuff(type, bufflvl){
+        let buffComponentClass = this.buffClasses[type];
+        let component = new buffComponentClass(this.host);
+        component.bufflvl = bufflvl;
+        this.host.attachments[type] = component;
+        this.host.addComponent(component);
+        component.on();
+        this.buffs[type] = bufflvl;
+    }
+
+    tryBuff(type, bufflvl){
+        if (this.buffs[type] !== bufflvl){
+            if (this.buffs[type] == undefined){
+                this.applyBuff(type, bufflvl);
+            } else
+            if (bufflvl > this.buffs[type]){
+                this.cancelBuff(type);
+                this.applyBuff(type, bufflvl);
+            }
         }
     }
 
@@ -27,7 +38,7 @@ class BuffsComponent extends GameComponent {
             component.off();
             this.host.removeComponent(component);
         }
-        this.buffs[type] = false;
+        this.buffs[type] = 0;
     }
 
 }

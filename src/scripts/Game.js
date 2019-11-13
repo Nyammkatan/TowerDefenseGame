@@ -12,8 +12,9 @@ class Game {
     }
 
     linearInterpolation(fx1, fx2, x1, x, x2){
+        if (x2 < x1) return fx2;
         if (x >= x2) return fx2;
-        if (x < x1) return fx1;
+        if (x <= x1) return fx1;
         return fx1+( fx2 - fx1 )*(x - x1)/(x2 - x1);
 
     }

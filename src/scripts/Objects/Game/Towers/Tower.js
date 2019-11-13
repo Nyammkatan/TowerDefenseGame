@@ -14,5 +14,10 @@ class Tower extends GameObject {
         this.addComponent(this.renderComponent);
     }
 
+    onDestroy(){
+
+        
+    }
+
 }
 export default Tower;

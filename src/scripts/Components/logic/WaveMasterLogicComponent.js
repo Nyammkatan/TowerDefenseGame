@@ -9,7 +9,7 @@ class WaveMasterLogicComponent extends GameComponent {
         this.waves = [];
         this.currentWaveIndex = 0;
         let c = host.game.constants;
-        this.storeWave(c.MOB_FIRE_0, 12, 1);
+        this.storeWave(c.MOB_FIRE_0, 12, 0.5);
         this.storeWave(c.MOB_EARTH_0, 12, 1);
         this.storeWave(c.MOB_WATER_0, 12, 1);
         this.storeWave(c.MOB_SHADOW_0, 12, 1);
