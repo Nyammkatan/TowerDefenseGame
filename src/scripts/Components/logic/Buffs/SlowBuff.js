@@ -8,7 +8,7 @@ class SlowBuff extends BuffComponent{
     }
 
     on(){
-        this.host.turnTime += 0.1 * this.bufflvl;
+        this.host.mobMovingComponent.movementSpeed -= 40 * this.bufflvl;
     }
 
     update(delta){
@@ -19,7 +19,7 @@ class SlowBuff extends BuffComponent{
     }
 
     off(){
-        this.host.turnTime -= 0.1 * this.bufflvl;
+        this.host.mobMovingComponent.movementSpeed += 40 * this.bufflvl;
     }
 
 }

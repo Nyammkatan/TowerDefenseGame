@@ -18,8 +18,8 @@ class Mob extends GameObject {
         this.renderComponent = new RenderComponent(this, this.bodyComponent, null);
         this.addComponent(this.renderComponent);
 
-        let mobMovingComponent = new MobMovingComponent(this, this.bodyComponent, route, tileSize, turnTime);
-        this.addComponent(mobMovingComponent);
+        this.mobMovingComponent = new MobMovingComponent(this, this.bodyComponent, route, tileSize, turnTime);
+        this.addComponent(this.mobMovingComponent);
 
     }
 
