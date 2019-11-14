@@ -38,7 +38,7 @@ class BuffsComponent extends GameComponent {
             component.off();
             this.host.removeComponent(component);
         }
-        this.buffs[type] = 0;
+        this.buffs[type] = undefined;
     }
 
 }

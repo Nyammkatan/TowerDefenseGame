@@ -1,8 +1,9 @@
 import GameComponent from "../../GameComponent";
 
 class BulletComponent extends GameComponent {
-    constructor(host, target){
+    constructor(host, target, mobs){
         super(host);
+        this.mobs = mobs;
         this.target = target;
         this.speed = 250;
     }
@@ -15,7 +16,29 @@ class BulletComponent extends GameComponent {
         body.y += Math.sin(angle) * this.speed * delta;
         if(body.overlaps(tBody)){
             this.host.parent.removeChild(this.host);
-            this.target.receiveDamage(this.host.tower);
+            this.target.receiveDamage(this.host.tower, 1);
+            let attackTowerC = this.host.tower.towerComponent;
+            if(attackTowerC.attackType === "fire"){
+                this.target.buffsComponent.tryBuff("burn", attackTowerC.upgradeAbilityLevel);
+            } else
+            if(attackTowerC.attackType === "water"){
+                // this.target.buffsComponent.tryBuff("slow", attackTowerC.upgradeAbilityLevel);
+                for(let i = 0; i < this.mobs.length; i++){
+                    if(this.mobs[i].bodyComponent.distanceTo(this.target.bodyComponent) < 100 + 100 * (0.2 * attackTowerC.upgradeAbilityLevel)){
+                        this.mobs[i].buffsComponent.tryBuff("slow", attackTowerC.upgradeAbilityLevel);
+                    }
+                }
+            } else
+            if(attackTowerC.attackType === "shadow"){
+                this.target.buffsComponent.tryBuff("curse", attackTowerC.upgradeAbilityLevel);
+            } else
+            if(attackTowerC.attackType === "earth"){
+                for(let i = 0; i < this.mobs.length; i++){
+                    if(this.target !== this.mobs[i] && this.mobs[i].bodyComponent.distanceTo(this.target.bodyComponent) < 100 + 100 * (0.2 * attackTowerC.upgradeAbilityLevel)){
+                        this.mobs[i].receiveDamage(this.host.tower, 0.25);
+                    }
+                }
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ class CurseBuff extends BuffComponent {
     }
 
     update(delta){
-        this.burnTimer += delta;
+        this.curseTimer += delta;
         if (this.curseTimer >= this.curseTime){
             this.host.buffsComponent.cancelBuff(this.type);
         }

@@ -5,7 +5,7 @@ import BulletComponent from "../../../Components/logic/Bullets/BulletComponent";
 
 class Bullet extends GameObject {
 
-    constructor(game, x, y, tower, mob){
+    constructor(game, x, y, tower, mob, mobs){
         super(game);
         this.target = mob;
         this.bodyComponent = new BodyComponent(this, x, y, 10, 10);
@@ -19,7 +19,7 @@ class Bullet extends GameObject {
             game.p.rect(this.bodyComponent.x-5, this.bodyComponent.y-5, this.bodyComponent.w, this.bodyComponent.h);
         };
 
-        this.bulletComponent = new BulletComponent(this, this.target);
+        this.bulletComponent = new BulletComponent(this, this.target, mobs);
         this.addComponent(this.bulletComponent);
 
     }

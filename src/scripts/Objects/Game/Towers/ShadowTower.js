@@ -1,4 +1,5 @@
 import Tower from "./Tower";
+import ShadowTowerComponent from "../../../Components/logic/Towers/ShadowTowerComponent";
 
 class ShadowTower extends Tower {
 

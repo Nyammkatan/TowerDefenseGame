@@ -15,7 +15,12 @@ class BurningBuff extends BuffComponent {
 
     update(delta){
         this.burnTimer += delta;
-        this.host.hp -= delta * 10 * this.bufflvl;
+        let damagePerSecond = delta * 10 * this.bufflvl;
+        if(this.host.hp < damagePerSecond){
+            this.host.hp = 0;
+        } else {
+            this.host.hp -= damagePerSecond;
+        }
         if (this.burnTimer >= this.burnTime){
             this.host.buffsComponent.cancelBuff(this.type);
         }

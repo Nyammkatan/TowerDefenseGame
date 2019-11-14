@@ -1,4 +1,5 @@
 import Tower from "./Tower";
+import WaterTowerComponent from "../../../Components/logic/Towers/WaterTowerComponent";
 
 class WaterTower extends Tower {
 

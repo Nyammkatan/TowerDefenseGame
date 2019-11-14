@@ -34,8 +34,8 @@ class Mob extends GameObject {
         }
     }
 
-    receiveDamage(tower){
-        let pureDamage = tower.towerComponent.attackDamage;
+    receiveDamage(tower, coef){
+        let pureDamage = tower.towerComponent.attackDamage*coef;
         let damage = pureDamage * this.resist.resists[tower.towerComponent.attackType];
         if(this.hp < damage){
             this.hp = 0;
@@ -43,6 +43,6 @@ class Mob extends GameObject {
             this.hp -= damage;
         }
     }
-
 }
+
 export default Mob;

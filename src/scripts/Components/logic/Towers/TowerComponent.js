@@ -43,7 +43,7 @@ class TowerComponent extends GameComponent {
 
     bulletSpawn(mob){
         let body = this.host.bodyComponent;
-        let bullet = new Bullet(this.host.game, body.x+body.w/2, body.y+body.h/2, this.host, mob);
+        let bullet = new Bullet(this.host.game, body.x+body.w/2, body.y+body.h/2, this.host, mob, this.mobs);
         this.host.addChild(bullet);
 
     }

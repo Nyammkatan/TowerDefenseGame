@@ -2,7 +2,7 @@ import TowerComponent from "./TowerComponent";
 
 class WaterTowerComponent extends TowerComponent {
     constructor(host){
-        super(host, "water", 1.2, 100, 200);
+        super(host, "water", 1.2, 20, 200);
     }
 
     upgradeStats(){
