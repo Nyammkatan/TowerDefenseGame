@@ -4,11 +4,11 @@ class MobResistComponent extends GameComponent{
     constructor(host, fireResist, waterResist, airResist, earthResist, shadowResist){
         super(host);
         this.resists = [];
-        this.resists["fireResist"] = fireResist;
-        this.resists["waterResist"] = waterResist;
-        this.resists["airResist"] = airResist;
-        this.resists["earthResist"] = earthResist;
-        this.resists["shadowResist"] = shadowResist;
+        this.resists["fire"] = fireResist;
+        this.resists["water"] = waterResist;
+        this.resists["air"] = airResist;
+        this.resists["earth"] = earthResist;
+        this.resists["shadow"] = shadowResist;
     }
 }
 

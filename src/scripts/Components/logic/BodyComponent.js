@@ -55,5 +55,19 @@ class BodyComponent extends GameComponent {
 
     }
 
+    angleTo(bodyComponent){
+        let xDist = bodyComponent.x - this.x;
+        let yDist = bodyComponent.y - this.y;
+        return Math.atan2(yDist, xDist);
+
+    }
+
+    angleToPoint(x, y){
+        let xDist = x - this.x;
+        let yDist = y - this.y;
+        return Math.atan2(yDist, xDist);
+
+    }
+
 }
 export default BodyComponent;

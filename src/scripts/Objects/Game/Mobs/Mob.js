@@ -10,7 +10,7 @@ class Mob extends GameObject {
         super(game);
         this.route = route;
         this.maxHp = hp;
-        this.hp = hp/2;
+        this.hp = hp;
         this.resist = resist;
 
         this.bodyComponent = new BodyComponent(this, x, y, size, size);
@@ -25,6 +25,23 @@ class Mob extends GameObject {
         this.hpRenderComponent = new HPRenderComponent(this, this.bodyComponent);
         this.addComponent(this.hpRenderComponent);
 
+    }
+
+    update(delta) {
+        super.update(delta);
+        if(this.hp === 0){
+            this.removeFromParent();
+        }
+    }
+
+    receiveDamage(tower){
+        let pureDamage = tower.towerComponent.attackDamage;
+        let damage = pureDamage * this.resist.resists[tower.towerComponent.attackType];
+        if(this.hp < damage){
+            this.hp = 0;
+        } else {
+            this.hp -= damage;
+        }
     }
 
 }

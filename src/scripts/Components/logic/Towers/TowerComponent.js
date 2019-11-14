@@ -1,4 +1,5 @@
 import GameComponent from "../../GameComponent";
+import Bullet from "../../../Objects/Game/Bullets/Bullet";
 
 class TowerComponent extends GameComponent {
 
@@ -33,15 +34,18 @@ class TowerComponent extends GameComponent {
             this.attackTimer -= this.attackSpeed;
             for(let i = 0; i < this.mobs.length; i++){
                 if(this.host.bodyComponent.distanceTo(this.mobs[i].bodyComponent)<this.attackRange){
-                    this.bulletSpawn();
+                    this.bulletSpawn(this.mobs[i]);
                     break;
                 }
             }
         }
     }
 
-    bulletSpawn(){
-        
+    bulletSpawn(mob){
+        let body = this.host.bodyComponent;
+        let bullet = new Bullet(this.host.game, body.x+body.w/2, body.y+body.h/2, this.host, mob);
+        this.host.addChild(bullet);
+
     }
 
 }

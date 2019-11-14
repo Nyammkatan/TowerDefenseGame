@@ -7,7 +7,7 @@ class AirTowerComponent extends TowerComponent {
 
     upgradeStats(){
         super.upgradeStats();
-        this.attackSpeed -= 0,02;
+        this.attackSpeed -= 0.02;
         this.attackDamage += 40; 
     }
 

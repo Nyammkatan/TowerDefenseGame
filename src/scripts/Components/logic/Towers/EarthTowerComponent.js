@@ -7,7 +7,7 @@ class EarthTowerComponent extends TowerComponent {
 
     upgradeStats(){
         super.upgradeStats();
-        this.attackSpeed -= 0,07;
+        this.attackSpeed -= 0.07;
         this.attackDamage += 80; 
     }
 
