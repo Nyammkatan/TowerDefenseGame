@@ -13,6 +13,7 @@ class TilemapRenderComponent extends GameComponent {
         for (let i=0; i < this.map.length; i++){
             for (let j=0; j < this.map[i].length; j++){
                 let p = this.host.game.p;
+                p.stroke(0);
                 switch(this.map[i][j]){
                     case 0:
                         p.fill(20, 172, 5);

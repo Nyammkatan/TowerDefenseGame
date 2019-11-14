@@ -1,4 +1,4 @@
-import Tower from "../Tower";
+import Tower from "./Tower";
 
 class EarthTower extends Tower {
 
@@ -9,4 +9,4 @@ class EarthTower extends Tower {
     }
 
 }
-export default EarthTower;
+export default  EarthTower;

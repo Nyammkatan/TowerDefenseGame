@@ -7,7 +7,7 @@ class FireTowerComponent extends TowerComponent {
 
     upgradeStats(){
         super.upgradeStats();
-        this.attackSpeed -= 0,03;
+        this.attackSpeed -= 0.03;
         this.attackDamage += 60; 
     }
 

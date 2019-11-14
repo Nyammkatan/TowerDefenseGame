@@ -1,4 +1,4 @@
-import Tower from "../Tower";
+import Tower from "./Tower";
 
 class WaterTower extends Tower {
 
