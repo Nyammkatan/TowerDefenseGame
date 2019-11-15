@@ -10,6 +10,10 @@ class RenderComponent extends GameComponent {
             this.width = image.width;
             this.height = image.height;
 
+        } else {
+            this.width = bodyComponent.width;
+            this.height = bodyComponent.height;
+
         }
     }
 
@@ -25,10 +29,10 @@ class RenderComponent extends GameComponent {
 
     draw(){
         if (this.image == null){
-            this.host.game.p.fill(255, 0, 0);
-            this.host.game.p.rect(this.bodyComponent.x, this.bodyComponent.y, this.bodyComponent.w, this.bodyComponent.h);
+            mainGame.p.fill(255, 0, 0);
+            mainGame.p.rect(this.bodyComponent.x, this.bodyComponent.y, this.bodyComponent.w, this.bodyComponent.h);
         } else
-        this.host.game.p.image(this.image, this.bodyComponent.x, this.bodyComponent.y, this.width, this.height);
+            mainGame.p.image(this.image, this.bodyComponent.x, this.bodyComponent.y, this.width, this.height);
 
     }
 

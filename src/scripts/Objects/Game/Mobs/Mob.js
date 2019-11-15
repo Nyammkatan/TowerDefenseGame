@@ -8,6 +8,7 @@ class Mob extends GameObject {
 
     constructor(game, x, y, size, tileSize, route, turnTime, resist, hp){
         super(game);
+        this.bounty = 2;
         this.route = route;
         this.maxHp = hp;
         this.hp = hp;

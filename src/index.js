@@ -16,7 +16,10 @@ const s = (p) => {
 
     }
 
-    p.imagesArray = ["assets/ui/buttons_menu.png", "assets/moon.png"];
+    p.imagesArray = ["assets/ui/buttons_menu.png",
+        "assets/map/Tileset.png",
+        "assets/ui/BottomMenu.png"
+    ];
     p.soundsArray = ["assets/Jump3.wav"];
 
     p.gimages = {};

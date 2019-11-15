@@ -15,7 +15,7 @@ class TowerComponent extends GameComponent {
         this.upgradeStatsLevel = 1;
         this.upgradeAbilityLevel = 1;
 
-        this.mobs = host.game.state.waveMaster.kids;
+        this.mobs = mainGame.state.waveMaster.kids;
 
         this.attackTimer = 0;
     }

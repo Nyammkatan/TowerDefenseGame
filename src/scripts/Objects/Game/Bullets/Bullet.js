@@ -15,8 +15,9 @@ class Bullet extends GameObject {
         this.renderComponent = new RenderComponent(this, this.bodyComponent, null);
         this.addComponent(this.renderComponent);
         this.renderComponent.draw = ()=> {
-            game.p.fill(255, 0, 255);
-            game.p.rect(this.bodyComponent.x-5, this.bodyComponent.y-5, this.bodyComponent.w, this.bodyComponent.h);
+            mainGame.p.stroke(0);
+            mainGame.p.fill(255, 0, 255);
+            mainGame.p.rect(this.bodyComponent.x-5, this.bodyComponent.y-5, this.bodyComponent.w, this.bodyComponent.h);
         };
 
         this.bulletComponent = new BulletComponent(this, this.target, mobs);

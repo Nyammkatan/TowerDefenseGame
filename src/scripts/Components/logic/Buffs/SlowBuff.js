@@ -5,10 +5,11 @@ class SlowBuff extends BuffComponent{
         super(host, "slow");
         this.slowTimer = 0;
         this.slowTime = 4;
+        this.startValue = this.host.mobMovingComponent.movementSpeed;
     }
 
     on(){
-        this.host.mobMovingComponent.movementSpeed -= 40 * this.bufflvl;
+        this.host.mobMovingComponent.movementSpeed = this.host.mobMovingComponent.movementSpeed - this.host.mobMovingComponent.movementSpeed * 0.1 * this.bufflvl;
     }
 
     update(delta){
@@ -19,7 +20,7 @@ class SlowBuff extends BuffComponent{
     }
 
     off(){
-        this.host.mobMovingComponent.movementSpeed += 40 * this.bufflvl;
+        this.host.mobMovingComponent.movementSpeed = this.startValue;
     }
 
 }

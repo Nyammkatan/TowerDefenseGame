@@ -48,6 +48,18 @@ class BodyComponent extends GameComponent {
         
     }
 
+    mouseHover(x, y){
+        let mouseX = x;
+        let mouseY = y;
+        if (mouseX >= this.x && mouseX < this.x+this.w){
+            if (mouseY >= this.y && mouseY < this.y+this.h){
+                return true;
+            }
+        }
+        return false;
+
+    }
+
     distanceToPoint(x, y){
         let k1 = Math.abs(x-this.x);
         let k2 = Math.abs(y-this.y);
