@@ -8,6 +8,7 @@ class TilemapRenderComponent extends GameComponent {
         this.tileSize = tilemapContainerComponent.tileSize;
         this.texture = host.game.p.gimages["assets/map/Tileset.png"];
         this.grass = this.texture.get(0, 0, 40, 40);
+        this.road = this.texture.get(40, 0, 40, 40);
 
     }
 
@@ -23,16 +24,14 @@ class TilemapRenderComponent extends GameComponent {
                         p.image(this.grass, j*this.tileSize, i*this.tileSize);
                         break;
                     case 1:
-                        p.fill(100, 50, 0);
-                        p.rect(j*this.tileSize, i*this.tileSize, this.tileSize, this.tileSize);
+                        p.image(this.road, j*this.tileSize, i*this.tileSize);
                         break;
                     case 2:
                         p.fill(0);
                         p.rect(j*this.tileSize, i*this.tileSize, this.tileSize, this.tileSize);
                         break;
                     case 3:
-                        p.fill(100, 50, 0);
-                        p.rect(j*this.tileSize, i*this.tileSize, this.tileSize, this.tileSize);
+                        p.image(this.road, j*this.tileSize, i*this.tileSize);
                         break;
                 }
 
