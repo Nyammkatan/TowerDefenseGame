@@ -1,3 +1,5 @@
+import BuffsComponent from "../Components/logic/Buffs/BuffsComponent";
+
 class GameObject {
 
     constructor(game){
@@ -5,6 +7,10 @@ class GameObject {
         this.components = [];
         this.kids = [];
         this.parent = undefined;
+
+        //buffs
+        this.buffsComponent = new BuffsComponent(this);
+        this.attachments = {};
 
     }
 
@@ -27,6 +33,17 @@ class GameObject {
         }
 
     }
+
+    drawUpper(index){
+        for (let i=0; i < this.components.length; i++){
+            this.components[i].drawUpper(index);
+        }
+        for (let i=0; i < this.kids.length; i++){
+            this.kids[i].drawUpper(index);
+        }
+
+    }
+
 
     addComponent(c){
         this.components.push(c);

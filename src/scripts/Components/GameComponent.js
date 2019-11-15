@@ -13,6 +13,10 @@ class GameComponent {
 
     }
 
+    drawUpper(index){
+
+    }
+
     mouseClicked(){
 
     }

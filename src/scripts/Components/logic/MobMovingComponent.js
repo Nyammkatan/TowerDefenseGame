@@ -2,52 +2,52 @@ import GameComponent from "../GameComponent";
 
 class MobMovingComponent extends GameComponent {
 
-    constructor(host, bodyComponent, route, tileSize, turnTime){
+    constructor(host, bodyComponent, route, tileSize, movementSpeed){
         super(host);
         this.bodyComponent = bodyComponent;
         this.route = route;
         this.tileSize = tileSize;
-        this.turnTime = turnTime;
-        this.tileIndex = 0;
-
-        this.startTime = 0;
-        this.endTime = 0;
-        this.startLocation = {i:0, j:0};
-        this.endLocation = {i:-1, j:18};
-
-        this.nextDestination();
+        this.movementSpeed = movementSpeed;
+        
+        this.shift = (this.tileSize*2)-this.tileSize-this.bodyComponent.w*0.5;
+        this.vx = 0;
+        this.vy = 0;
+        this.bodyComponent.x += this.shift;
+        this.bodyComponent.y += this.shift;
+        this.currentRouteIndex = 0;
+        this.currentTile = undefined;
+        this.angle = 0;
+        this.nextTile();
 
     }
 
-    nextDestination(){
-        let tile = this.route[this.tileIndex++];
-        if (tile == undefined) {
-            this.host.removeFromParent();
-            return;
+    nextTile(){
+        let tile = this.route[this.currentRouteIndex++];
+        this.currentTile = tile;
+        if (tile != undefined){
+            let xDist = (tile.j*this.tileSize) - (this.bodyComponent.x - this.shift);
+            let yDist = (tile.i*this.tileSize) - (this.bodyComponent.y - this.shift);
+            this.angle = Math.atan2(yDist, xDist);// * 180 / Math.PI;
         }
-        let i = tile.i;
-        let j = tile.j;
-        this.startTime = this.host.game.gameTime;
-        this.endTime = this.startTime + this.turnTime;
-        this.startLocation.i = this.endLocation.i;
-        this.startLocation.j = this.endLocation.j;
-        this.endLocation.i = i;
-        this.endLocation.j = j;
-
     }
 
     update(delta){
-        let time = this.host.game.gameTime;
-        let shift = (this.tileSize-this.bodyComponent.w)/2;
-        this.bodyComponent.x = this.host.game.linearInterpolation(this.startLocation.j*this.tileSize, this.endLocation.j*this.tileSize,
-                                                                    this.startTime, time, this.endTime)+shift;
-        this.bodyComponent.y = this.host.game.linearInterpolation(this.startLocation.i*this.tileSize, this.endLocation.i*this.tileSize,
-                                                                    this.startTime, time, this.endTime)+shift;
-        if (this.bodyComponent.x-shift == this.endLocation.j*this.tileSize){
-            if (this.bodyComponent.y-shift == this.endLocation.i*this.tileSize){
-                this.nextDestination();
+        this.vx = Math.cos(this.angle) * this.movementSpeed;
+        this.vy = Math.sin(this.angle) * this.movementSpeed;
+
+        this.bodyComponent.x += this.vx * delta;
+        this.bodyComponent.y += this.vy * delta;
+
+        if (this.currentTile != undefined){
+            let pointx = this.currentTile.j*this.tileSize;
+            let pointy = this.currentTile.i*this.tileSize;
+            let dist = this.bodyComponent.distanceToPoint(pointx+this.shift, pointy+this.shift);
+            if (dist < 10){
+                this.nextTile();
             }
-        }
+        } else {
+            this.host.removeFromParent();
+        }        
 
     }
 

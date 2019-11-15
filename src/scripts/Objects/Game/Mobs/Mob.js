@@ -1,31 +1,50 @@
 import GameObject from "../../GameObject";
 import BodyComponent from "../../../Components/logic/BodyComponent";
-import GameComponent from "../../../Components/GameComponent";
 import MobMovingComponent from "../../../Components/logic/MobMovingComponent";
+import RenderComponent from "../../../Components/render/RenderComponent";
+import HPRenderComponent from "../../../Components/render/HPRenderComponent";
 
 class Mob extends GameObject {
 
     constructor(game, x, y, size, tileSize, route, turnTime, resist, hp){
         super(game);
+        this.bounty = 2;
         this.route = route;
-        this.hp = hp; //NASHE ISKLUCHENIE TOLKO NA ETOT RAZ. tak chto raduysya Radomyr.
+        this.maxHp = hp;
+        this.hp = hp;
         this.resist = resist;
 
         this.bodyComponent = new BodyComponent(this, x, y, size, size);
         this.addChild(this.bodyComponent);
 
-        this.renderComponent = new GameComponent(this);
-        this.renderComponent.draw = ()=> {
-            game.p.fill(255, 0, 0);
-            game.p.rect(this.bodyComponent.x, this.bodyComponent.y, this.bodyComponent.w, this.bodyComponent.h);
-
-        };
+        this.renderComponent = new RenderComponent(this, this.bodyComponent, null);
         this.addComponent(this.renderComponent);
 
-        let mobMovingComponent = new MobMovingComponent(this, this.bodyComponent, route, tileSize, turnTime);
-        this.addComponent(mobMovingComponent);
+        this.mobMovingComponent = new MobMovingComponent(this, this.bodyComponent, route, tileSize, turnTime);
+        this.addComponent(this.mobMovingComponent);
+
+        this.hpRenderComponent = new HPRenderComponent(this, this.bodyComponent);
+        this.addComponent(this.hpRenderComponent);
 
     }
 
+    update(delta) {
+        super.update(delta);
+        if(this.hp === 0){
+            this.removeFromParent();
+            mainGame.money += this.bounty;
+        }
+    }
+
+    receiveDamage(tower, coef){
+        let pureDamage = tower.towerComponent.attackDamage*coef;
+        let damage = pureDamage * this.resist.resists[tower.towerComponent.attackType];
+        if(this.hp < damage){
+            this.hp = 0;
+        } else {
+            this.hp -= damage;
+        }
+    }
 }
+
 export default Mob;

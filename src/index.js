@@ -16,7 +16,10 @@ const s = (p) => {
 
     }
 
-    p.imagesArray = ["assets/ui/buttons_menu.png"];
+    p.imagesArray = ["assets/ui/buttons_menu.png",
+        "assets/map/Tileset.png",
+        "assets/ui/BottomMenu.png"
+    ];
     p.soundsArray = ["assets/Jump3.wav"];
 
     p.gimages = {};
@@ -52,6 +55,7 @@ const s = (p) => {
         currTime = 0;
 
         game = new Game(p);
+        window.mainGame = game;
         game.setState(new GameState(game));
     
     };
@@ -62,6 +66,7 @@ const s = (p) => {
 
         p.background(0);
 
+        if (delta < 0.2)
         game.update(delta);
         game.draw(p);
         
