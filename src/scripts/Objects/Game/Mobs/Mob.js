@@ -3,6 +3,7 @@ import BodyComponent from "../../../Components/logic/BodyComponent";
 import MobMovingComponent from "../../../Components/logic/MobMovingComponent";
 import RenderComponent from "../../../Components/render/RenderComponent";
 import HPRenderComponent from "../../../Components/render/HPRenderComponent";
+import DyingObject from "./DyingObject";
 
 class Mob extends GameObject {
 
@@ -18,7 +19,7 @@ class Mob extends GameObject {
         this.addChild(this.bodyComponent);
 
         this.renderComponent = new RenderComponent(this, this.bodyComponent, null);
-        this.addComponent(this.renderComponent);
+        //this.addComponent(this.renderComponent);
 
         this.mobMovingComponent = new MobMovingComponent(this, this.bodyComponent, route, tileSize, turnTime);
         this.addComponent(this.mobMovingComponent);
@@ -33,6 +34,8 @@ class Mob extends GameObject {
         if(this.hp === 0){
             this.removeFromParent();
             mainGame.money += this.bounty;
+            let dyingObject = new DyingObject(this.game, this.bodyComponent.x, this.bodyComponent.y);
+            this.game.state.addGameObject(dyingObject);
         }
     }
 

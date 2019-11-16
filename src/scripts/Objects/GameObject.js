@@ -24,6 +24,30 @@ class GameObject {
 
     }
 
+    drawRect(x, y, w, h, color){
+        let p = mainGame.p;
+        p.push();
+        let halfWidth = w*0.5;
+        let halfHeight = h*0.5;
+        p.translate(x+halfWidth, y+halfHeight);
+        p.stroke(0);
+        p.fill(color);
+        p.rect(-halfWidth, -halfHeight, w, h);
+        p.pop();
+    }
+
+    drawSprite(image, x, y, angle, scale=1){
+        let p = mainGame.p;
+        p.push();
+        let halfWidth = image.width*0.5;
+        let halfHeight = image.height*0.5;
+        p.translate(x+halfWidth, y+halfHeight);
+        p.scale(scale);
+        p.rotate((-90 * p.PI / 180)+angle);
+        p.image(image, -image.width*0.5, -image.height*0.5);
+        p.pop();
+    }
+
     draw(){
         for (let i=0; i < this.components.length; i++){
             this.components[i].draw();
@@ -57,6 +81,9 @@ class GameObject {
     }
 
     removeFromParent(){
+        if (this.parent == undefined){
+            mainGame.state.removeGameObject(this);
+        } else
         this.parent.removeChild(this);
 
     }

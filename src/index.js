@@ -18,7 +18,8 @@ const s = (p) => {
 
     p.imagesArray = ["assets/ui/buttons_menu.png",
         "assets/map/Tileset.png",
-        "assets/ui/BottomMenu.png"
+        "assets/ui/BottomMenu.png",
+        "assets/mobs/MobFire0.png"
     ];
     p.soundsArray = ["assets/Jump3.wav"];
 
@@ -50,6 +51,7 @@ const s = (p) => {
 
     p.setup = function() {
         let canvas = p.createCanvas(p.gameWidth, p.gameHeight);
+        p.pixelDensity(1);
 
         lastTime = (new Date()).getTime();
         currTime = 0;

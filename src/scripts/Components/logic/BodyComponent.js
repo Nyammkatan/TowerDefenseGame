@@ -8,6 +8,7 @@ class BodyComponent extends GameComponent {
         this.y = y;
         this.w = w;
         this.h = h;
+        this.angle = 0;
 
     }
 

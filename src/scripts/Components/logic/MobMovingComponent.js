@@ -35,6 +35,18 @@ class MobMovingComponent extends GameComponent {
         this.vx = Math.cos(this.angle) * this.movementSpeed;
         this.vy = Math.sin(this.angle) * this.movementSpeed;
 
+        // if (this.vx >= -10 && this.vx <= 10){
+        //     this.host.animationController.setCurrentAnimation("down");
+        // } else {
+        //     if (this.vx < 0){
+        //         this.host.animationController.setCurrentAnimation("left");
+        //     } else {
+        //         this.host.animationController.setCurrentAnimation("right");
+        //     }
+        // }
+
+        this.host.bodyComponent.angle = this.angle;
+
         this.bodyComponent.x += this.vx * delta;
         this.bodyComponent.y += this.vy * delta;
 
