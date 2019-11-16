@@ -9,6 +9,7 @@ class WaveMasterLogicComponent extends GameComponent {
         this.waves = [];
         this.currentWaveIndex = 0;
         let c = host.game.constants;
+        
         this.storeWave(c.MOB_FIRE_0, 15, 0.6);
         this.storeWave(c.MOB_EARTH_0, 15, 0.5);
         this.storeWave(c.MOB_WATER_0, 15, 0.7);
@@ -19,8 +20,8 @@ class WaveMasterLogicComponent extends GameComponent {
         this.storeWave(c.MOB_AIR_1, 12, 1);
         this.storeWave(c.MOB_FIRE_1, 12, 1);
         this.storeWave(c.MOB_SHADOW_1, 2, 1);
-        this.storeWave(c.MOB_FIRE_2, 12, 0.3);
-        this.storeWave(c.MOB_WATER_2, 12, 0.5);
+        this.storeWave(c.MOB_FIRE_2, 12, 0.6);
+        this.storeWave(c.MOB_WATER_2, 12, 0.7);
         this.storeWave(c.MOB_SHADOW_2, 12, 0.7);
         this.storeWave(c.MOB_AIR_2, 12, 1);
         this.storeWave(c.MOB_EARTH_2, 2, 0.5);
@@ -39,7 +40,7 @@ class WaveMasterLogicComponent extends GameComponent {
         this.spawningState = 0; //0 - wait | 1 - spawning
 
         this.timerWaveStart = 0;
-        this.timeToStartWave = 0.5;
+        this.timeToStartWave = 1;
 
         this.timerMobSpawn = 0;
         this.timeToSpawnMob = 1.2;

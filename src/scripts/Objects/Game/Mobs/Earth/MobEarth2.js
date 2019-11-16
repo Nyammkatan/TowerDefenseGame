@@ -3,8 +3,9 @@ import EarthResistComponent from "../../../../Components/logic/Resist/EarthResis
 
 class MobEarth2 extends Mob {
     constructor(game, x, y, tileSize, route){
-        super(game, x, y, 60, tileSize, route, 80, new EarthResistComponent(null), 7500);
+        super(game, x, y, 60, tileSize, route, 80, new EarthResistComponent(null), 100000);
         this.resist.host = this;
+        this.bounty = 1250;
     }
 
 }

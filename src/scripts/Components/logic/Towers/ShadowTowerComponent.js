@@ -2,7 +2,7 @@ import TowerComponent from "./TowerComponent";
 
 class ShadowTowerComponent extends TowerComponent {
     constructor(host){
-        super(host, "shadow", 1, 120, 400);
+        super(host, "shadow", 1, 120, 300);
     }
 
     upgradeStats(){

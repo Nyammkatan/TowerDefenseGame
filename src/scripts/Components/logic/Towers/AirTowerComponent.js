@@ -3,7 +3,7 @@ import TowerComponent from "./TowerComponent";
 class AirTowerComponent extends TowerComponent {
 
     constructor(host){
-        super(host, "air", 0.5, 75, 350);
+        super(host, "air", 0.5, 40, 270);
         this.timerAura = 0;
         this.auraTime = 0.2;
     }

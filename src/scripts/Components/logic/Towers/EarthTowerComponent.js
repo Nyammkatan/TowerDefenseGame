@@ -2,7 +2,7 @@ import TowerComponent from "./TowerComponent";
 
 class EarthTowerComponent extends TowerComponent {
     constructor(host){
-        super(host, "earth", 1.5, 200, 250);
+        super(host, "earth", 1.5, 180, 200);
     }
 
     upgradeStats(){

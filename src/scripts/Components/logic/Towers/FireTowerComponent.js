@@ -2,7 +2,7 @@ import TowerComponent from "./TowerComponent";
 
 class FireTowerComponent extends TowerComponent {
     constructor(host){
-        super(host, "fire", 0.8, 120, 250);
+        super(host, "fire", 0.8, 120, 200);
     }
 
     upgradeStats(){

@@ -3,9 +3,9 @@ import AirResistComponent from "../../../../Components/logic/Resist/AirResistCom
 
 class MobAir1 extends Mob {
     constructor(game, x, y, tileSize, route){
-        super(game, x, y, 30, tileSize, route, 170, new AirResistComponent(null), 1300);
+        super(game, x, y, 30, tileSize, route, 170, new AirResistComponent(null), 1100);
         this.resist.host = this;
-        this.bounty = 14;
+        this.bounty = 16;
     }
 
 }
