@@ -11,7 +11,7 @@ class MobEarth0 extends Mob {
         this.bounty = 3;
         this.animationController = new AnimationControllerComponent(this);
         this.animationController.addAnimation("down", new Animation(
-            AnimationUtils.getFrames("assets/mobs/MobsNew.png", 4, 0, 80, 3),
+            AnimationUtils.getFrames("assets/mobs/MobsNew.png", 7, 0, 80, 3),
             0.1, true)
         );
         this.animationController.setCurrentAnimation("down");

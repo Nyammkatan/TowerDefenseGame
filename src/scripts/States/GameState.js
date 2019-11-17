@@ -10,7 +10,7 @@ class GameState extends State {
 
     constructor(game){
         super(game);
-        game.money = 100;
+        game.money = 50000;
         this.tilemap = new Tilemap(game);
         this.addGameObject(this.tilemap);
         this.waveMaster = new WaveMaster(game, this.tilemap);

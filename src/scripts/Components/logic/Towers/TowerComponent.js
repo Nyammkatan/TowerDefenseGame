@@ -35,7 +35,7 @@ class TowerComponent extends GameComponent {
     }
 
     upgradeAbility(){
-        this.upgradeAbilityLevel += 1;
+        if(this.upgradeAbilityLevel !==5) this.upgradeAbilityLevel += 1;
     }
 
     update(delta){

@@ -122,18 +122,22 @@ class GameBottomMenu extends GameObject {
             if (this.currentBuildType == 2){ //upgrades, destroy
                 if (this.currentObject != undefined){
                     if (this.towerInsideButtonsBodies[0].mouseHover(x, y)){
-                        if (this.tryBuy(this.currentObject.towerComponent.upgradeStatsCost)){
-                            this.currentObject.towerComponent.upgradeStats();
-                            this.currentObject.towerComponent.towerCost += this.currentObject.towerComponent.upgradeStatsCost;
-                            this.currentObject.towerComponent.upgradeStatsCost += this.currentObject.towerComponent.upgradeStatsCost;
+                        if(this.currentObject.towerComponent.upgradeStatsLevel !== 5){
+                            if (this.tryBuy(this.currentObject.towerComponent.upgradeStatsCost)){
+                                this.currentObject.towerComponent.upgradeStats();
+                                this.currentObject.towerComponent.towerCost += this.currentObject.towerComponent.upgradeStatsCost;
+                                this.currentObject.towerComponent.upgradeStatsCost += this.currentObject.towerComponent.upgradeStatsCost;
+                            }
                         }
                     } else
                     if (this.towerInsideButtonsBodies[1].mouseHover(x, y)){
-                        if (this.tryBuy(this.currentObject.towerComponent.upgradeAbilityCost)){
-                            this.currentObject.towerComponent.upgradeAbility();
-                            this.currentObject.towerComponent.towerCost += this.currentObject.towerComponent.upgradeAbilityCost;
-                            this.currentObject.towerComponent.upgradeAbilityCost += 200 * Math.floor(Math.pow(1.5, this.currentObject.towerComponent.upgradeAbilityLevel));
-                        }   
+                        if(this.currentObject.towerComponent.upgradeAbilityLevel !== 5){
+                            if (this.tryBuy(this.currentObject.towerComponent.upgradeAbilityCost)){
+                                this.currentObject.towerComponent.upgradeAbility();
+                                this.currentObject.towerComponent.towerCost += this.currentObject.towerComponent.upgradeAbilityCost;
+                                this.currentObject.towerComponent.upgradeAbilityCost += 200 * Math.floor(Math.pow(1.5, this.currentObject.towerComponent.upgradeAbilityLevel));
+                            }  
+                        }
                     } else
                     if (this.towerInsideButtonsBodies[2].mouseHover(x, y)){
                         this.currentBuildType = 0;
