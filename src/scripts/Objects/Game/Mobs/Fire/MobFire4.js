@@ -1,5 +1,8 @@
 import Mob from "../Mob";
 import FireResistComponent from "../../../../Components/logic/Resist/FireResistComponent";
+import AnimationControllerComponent from "../../../../Components/AnimationControllerComponent";
+import Animation from "../../../../Components/Animation";
+import AnimationUtils from "../../../../Components/render/AnimationUtils";
 
 class MobFire4 extends Mob {
     constructor(game, x, y, tileSize, route){

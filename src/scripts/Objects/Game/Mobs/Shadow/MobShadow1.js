@@ -3,7 +3,7 @@ import ShadowResistComponent from "../../../../Components/logic/Resist/ShadowRes
 
 class MobShadow1 extends Mob {
     constructor(game, x, y, tileSize, route){
-        super(game, x, y, 60, tileSize, route, 150, new ShadowResistComponent(null), 6300);
+        super(game, x, y, 60, tileSize, route, 120, new ShadowResistComponent(null), 4500);
         this.resist.host = this;
         this.bounty = 200;
     }

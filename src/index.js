@@ -19,7 +19,9 @@ const s = (p) => {
     p.imagesArray = ["assets/ui/buttons_menu.png",
         "assets/map/Tileset.png",
         "assets/ui/BottomMenu.png",
+        "assets/mobs/MobsNew.png",
         "assets/mobs/MobFire0.png"
+        
     ];
     p.soundsArray = ["assets/Jump3.wav"];
 

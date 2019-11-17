@@ -26,7 +26,12 @@ class TowerComponent extends GameComponent {
     }
 
     upgradeStats(){
-        this.upgradeStatsLevel += 1;
+        if(this.host.buffsComponent.buffs["speed"] != undefined){
+            this.host.buffsComponent.cancelBuff("speed");
+            this.upgradeStatsLevel += 1;
+        } else {
+            this.upgradeStatsLevel += 1;
+        }
     }
 
     upgradeAbility(){

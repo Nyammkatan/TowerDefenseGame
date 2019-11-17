@@ -9,7 +9,7 @@ class SlowBuff extends BuffComponent{
     }
 
     on(){
-        this.host.mobMovingComponent.movementSpeed = this.host.mobMovingComponent.movementSpeed - this.host.mobMovingComponent.movementSpeed * 0.1 * this.bufflvl;
+        this.host.mobMovingComponent.movementSpeed = this.host.mobMovingComponent.movementSpeed - this.host.mobMovingComponent.movementSpeed * 0.07 * this.bufflvl;
     }
 
     update(delta){

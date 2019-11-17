@@ -15,26 +15,26 @@ class WaveMasterLogicComponent extends GameComponent {
         this.storeWave(c.MOB_WATER_0, 15, 0.7);
         this.storeWave(c.MOB_SHADOW_0, 15, 0.8);
         this.storeWave(c.MOB_AIR_0, 2, 1);
-        this.storeWave(c.MOB_EARTH_1, 12, 1);
-        this.storeWave(c.MOB_WATER_1, 12, 1);
-        this.storeWave(c.MOB_AIR_1, 12, 1);
-        this.storeWave(c.MOB_FIRE_1, 12, 1);
+        this.storeWave(c.MOB_EARTH_1, 15, 1);
+        this.storeWave(c.MOB_WATER_1, 15, 1);
+        this.storeWave(c.MOB_AIR_1, 15, 1);
+        this.storeWave(c.MOB_FIRE_1, 15, 1);
         this.storeWave(c.MOB_SHADOW_1, 2, 1);
-        this.storeWave(c.MOB_FIRE_2, 12, 0.6);
-        this.storeWave(c.MOB_WATER_2, 12, 0.7);
-        this.storeWave(c.MOB_SHADOW_2, 12, 0.7);
-        this.storeWave(c.MOB_AIR_2, 12, 1);
+        this.storeWave(c.MOB_FIRE_2, 15, 0.7);
+        this.storeWave(c.MOB_WATER_2, 15, 0.7);
+        this.storeWave(c.MOB_SHADOW_2, 15, 0.7);
+        this.storeWave(c.MOB_AIR_2, 15, 1);
         this.storeWave(c.MOB_EARTH_2, 2, 0.5);
-        this.storeWave(c.MOB_SHADOW_3, 12, 1);
-        this.storeWave(c.MOB_EARTH_3, 12, 1);
-        this.storeWave(c.MOB_FIRE_3, 12, 1);
-        this.storeWave(c.MOB_AIR_3, 12, 1);
+        this.storeWave(c.MOB_SHADOW_3, 15, 1);
+        this.storeWave(c.MOB_EARTH_3, 15, 1);
+        this.storeWave(c.MOB_FIRE_3, 15, 1);
+        this.storeWave(c.MOB_AIR_3, 15, 1);
         this.storeWave(c.MOB_WATER_3, 2, 1);
-        this.storeWave(c.MOB_EARTH_4, 12, 1);
-        this.storeWave(c.MOB_SHADOW_4, 12, 1);
-        this.storeWave(c.MOB_WATER_4, 12, 1);
-        this.storeWave(c.MOB_AIR_4, 12, 1);
-        this.storeWave(c.MOB_FIRE_4, 2, 1);
+        this.storeWave(c.MOB_EARTH_4, 15, 1);
+        this.storeWave(c.MOB_SHADOW_4, 15, 1);
+        this.storeWave(c.MOB_WATER_4, 15, 1);
+        this.storeWave(c.MOB_AIR_4, 15, 1);
+        this.storeWave(c.MOB_FIRE_4, 1, 1);
         
 
         this.spawningState = 0; //0 - wait | 1 - spawning
@@ -44,6 +44,8 @@ class WaveMasterLogicComponent extends GameComponent {
 
         this.timerMobSpawn = 0;
         this.timeToSpawnMob = 1.2;
+
+        this.waveId = 1;
 
         this.route = this.findRoute(tilemap.tilemapContainerComponent.map);
 
@@ -133,7 +135,8 @@ class WaveMasterLogicComponent extends GameComponent {
         let size = this.tilemap.tilemapContainerComponent.tileSize;
         let test = new MobClass(this.host.game, 17*size, -size, size, this.route);
         this.host.addChild(test);
-
+        console.log(this.waveId);
+        
     }
 
     update(delta){
@@ -158,7 +161,7 @@ class WaveMasterLogicComponent extends GameComponent {
             } else
             if (this.host.kids.length == 0){
                 this.spawningState = 0;
-
+                this.waveId++;
             }
         }
     }

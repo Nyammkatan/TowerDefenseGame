@@ -3,7 +3,7 @@ import WaterResistComponent from "../../../../Components/logic/Resist/WaterResis
 
 class MobWater4 extends Mob {
     constructor(game, x, y, tileSize, route){
-        super(game, x, y, 30, tileSize, route, 120, new WaterResistComponent(null), 2300);
+        super(game, x, y, 30, tileSize, route, 110, new WaterResistComponent(null), 2300);
         this.resist.host = this;
     }
 

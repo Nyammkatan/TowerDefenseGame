@@ -6,11 +6,11 @@ class AttackSpeedBuff extends BuffComponent{
     }
 
     on(){
-        this.host.towerComponent.attackSpeed -= this.host.towerComponent.attackSpeed * 0.15*this.bufflvl;
+        this.host.towerComponent.attackSpeed -= this.host.towerComponent.attackSpeed * (0.1 + 0.02*this.bufflvl);
     }
 
     off(){
-        this.host.towerComponent.attackSpeed += this.host.towerComponent.attackSpeed * 0.15*this.bufflvl;
+        this.host.towerComponent.attackSpeed += this.host.towerComponent.attackSpeed * (0.1 + 0.02*this.bufflvl);
     }
 
 

@@ -19,10 +19,13 @@ class BulletComponent extends GameComponent {
             this.target.receiveDamage(this.host.tower, 1);
             let attackTowerC = this.host.tower.towerComponent;
             if(attackTowerC.attackType === "fire"){
-                this.target.buffsComponent.tryBuff("burn", attackTowerC.upgradeAbilityLevel);
+                for(let i = 0; i < this.mobs.length; i++){
+                    if(this.mobs[i].bodyComponent.distanceTo(this.target.bodyComponent) < 90 + 100 * (0.1 * attackTowerC.upgradeAbilityLevel)){
+                        this.mobs[i].buffsComponent.tryBuff("burn", attackTowerC.upgradeAbilityLevel);
+                    }
+                }
             } else
             if(attackTowerC.attackType === "water"){
-                // this.target.buffsComponent.tryBuff("slow", attackTowerC.upgradeAbilityLevel);
                 for(let i = 0; i < this.mobs.length; i++){
                     if(this.mobs[i].bodyComponent.distanceTo(this.target.bodyComponent) < 100 + 100 * (0.2 * attackTowerC.upgradeAbilityLevel)){
                         this.mobs[i].buffsComponent.tryBuff("slow", attackTowerC.upgradeAbilityLevel);

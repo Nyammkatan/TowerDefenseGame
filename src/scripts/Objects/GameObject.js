@@ -24,25 +24,23 @@ class GameObject {
 
     }
 
-    drawRect(x, y, w, h, color){
+    drawRect(x, y, w, h, r, g, b){
         let p = mainGame.p;
         p.push();
         let halfWidth = w*0.5;
         let halfHeight = h*0.5;
         p.translate(x+halfWidth, y+halfHeight);
-        p.stroke(0);
-        p.fill(color);
+        p.fill(r, g, b);
         p.rect(-halfWidth, -halfHeight, w, h);
         p.pop();
     }
 
-    drawSprite(image, x, y, angle, scale=1){
+    drawSprite(image, x, y, angle){
         let p = mainGame.p;
         p.push();
         let halfWidth = image.width*0.5;
         let halfHeight = image.height*0.5;
         p.translate(x+halfWidth, y+halfHeight);
-        p.scale(scale);
         p.rotate((-90 * p.PI / 180)+angle);
         p.image(image, -image.width*0.5, -image.height*0.5);
         p.pop();
