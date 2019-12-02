@@ -10,14 +10,6 @@ class Tower extends GameObject {
         this.bodyComponent = new BodyComponent(this, x, y, mainGame.tileSize, mainGame.tileSize);
         this.addComponent(this.bodyComponent);
 
-        this.renderComponent = new RenderComponent(this, this.bodyComponent, null);
-        this.renderComponent.draw = ()=>{
-            mainGame.p.fill(255, 0, 0);
-            mainGame.p.rect(this.bodyComponent.x, this.bodyComponent.y, 40, 40);
-            mainGame.p.fill(50);
-            mainGame.p.text(this.towerComponent.upgradeStatsLevel+" "+this.towerComponent.upgradeAbilityLevel ,this.bodyComponent.x, this.bodyComponent.y, 40, 40);
-        }
-        this.addComponent(this.renderComponent);
     }
 
     onDestroy(){

@@ -12,7 +12,7 @@ class BodyComponent extends GameComponent {
 
     }
 
-    mouseHover(){
+    mainMouseHover(){
         let mouseX = this.host.game.p.mouseX;
         let mouseY = this.host.game.p.mouseY;
         if (mouseX >= this.x && mouseX < this.x+this.w){

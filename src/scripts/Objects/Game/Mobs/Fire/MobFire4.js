@@ -10,7 +10,7 @@ class MobFire4 extends Mob {
         this.resist.host = this;
         this.animationController = new AnimationControllerComponent(this);
         this.animationController.addAnimation("down", new Animation(
-            AnimationUtils.getFrames("assets/mobs/MobsNew.png", 4, 3, 80, 3),
+            AnimationUtils.getFrames("assets/mobs/Bosses.png", 4, 0, 160, 3),
             0.1, true)
         );
         this.animationController.setCurrentAnimation("down");
@@ -20,7 +20,7 @@ class MobFire4 extends Mob {
 
     draw() {
         super.draw();
-        this.drawSprite(this.animationController.currentAnim.getFrame(), this.bodyComponent.x-25, this.bodyComponent.y-25, this.bodyComponent.angle);
+        this.drawSprite(this.animationController.currentAnim.getFrame(), this.bodyComponent.x-50, this.bodyComponent.y-50, this.bodyComponent.angle);
     }
 
 }

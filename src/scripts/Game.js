@@ -33,6 +33,8 @@ class Game {
     draw(){
         this.state.draw();
         this.state.drawUpper(1);
+        this.state.drawUpper(2);
+        this.state.drawUpper(3);
 
     }
 
@@ -51,6 +53,11 @@ class Game {
     mouseDragged(){
         this.state.mouseDragged();
 
+    }
+
+    keyPressed(){
+        this.state.keyPressed();
+        
     }
 
 }

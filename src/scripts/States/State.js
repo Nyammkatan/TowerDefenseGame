@@ -3,6 +3,7 @@ class State {
     constructor(game){
         this.game = game;
         this.gameObjects = [];
+        this.running = true;
 
     }
 
@@ -21,6 +22,7 @@ class State {
     }
 
     mouseClicked(){
+        if  (this.running)
         for (let i=0; i < this.gameObjects.length; i++){
             this.gameObjects[i].mouseClicked();
 
@@ -29,6 +31,7 @@ class State {
     }
 
     mousePressed(){
+        if  (this.running)
         for (let i=0; i < this.gameObjects.length; i++){
             this.gameObjects[i].mousePressed();
 
@@ -37,6 +40,7 @@ class State {
     }
 
     mouseDragged(){
+        if  (this.running)
         for (let i=0; i < this.gameObjects.length; i++){
             this.gameObjects[i].mouseDragged();
 
@@ -45,6 +49,7 @@ class State {
     }
 
     update(delta){
+        if  (this.running)
         for (let i=0; i < this.gameObjects.length; i++){
             this.gameObjects[i].update(delta);
 
@@ -57,6 +62,11 @@ class State {
             this.gameObjects[i].draw();
 
         }
+        if (!this.running){
+            mainGame.p.fill(255, 255, 0);
+            mainGame.p.text("PAUSE", mainGame.p.gameWidth/2-13, mainGame.p.gameHeight/2-48);
+
+        }
 
     }
 
@@ -65,6 +75,11 @@ class State {
             this.gameObjects[i].drawUpper(index);
 
         }
+
+    }
+
+    keyPressed(){
+
 
     }
 

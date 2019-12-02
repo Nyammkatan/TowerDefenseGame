@@ -8,8 +8,10 @@ import ShadowTower from "./Towers/ShadowTower";
 
 class GameBottomMenu extends GameObject {
 
-    constructor(game, tilemap){
+    constructor(game, tilemap, mobs){
         super(game);
+        this.mobs = mobs
+        this.currentMob = undefined
         this.tilemap = tilemap;
         let tileSize = this.tilemap.tilemapContainerComponent.tileSize;
         this.towerButtonsBodies = [];
@@ -35,6 +37,22 @@ class GameBottomMenu extends GameObject {
         this.texture = this.game.p.gimages["assets/ui/BottomMenu.png"];
         this.currentObject = undefined;
 
+        this.towerTextures = [
+            mainGame.p.gimages["assets/towers/Towers.png"].get(0, 0, 40, 40),
+            mainGame.p.gimages["assets/towers/Towers.png"].get(40, 0, 40, 40),
+            mainGame.p.gimages["assets/towers/Towers.png"].get(40*2, 0, 40, 40),
+            mainGame.p.gimages["assets/towers/Towers.png"].get(40*3, 0, 40, 40),
+            mainGame.p.gimages["assets/towers/Towers.png"].get(40*4, 0, 40, 40)
+        ];
+        this.towerActionsTextures = [
+            mainGame.p.gimages["assets/towers/TowerActions.png"].get(0, 0, 40, 40),
+            mainGame.p.gimages["assets/towers/TowerActions.png"].get(40, 0, 40, 40),
+            mainGame.p.gimages["assets/towers/TowerActions.png"].get(80, 0, 40, 40),
+            mainGame.p.gimages["assets/towers/TowerActions.png"].get(0, 40, 40, 40),
+            mainGame.p.gimages["assets/towers/TowerActions.png"].get(40, 40, 40, 40),
+            mainGame.p.gimages["assets/towers/TowerActions.png"].get(80, 40, 40, 40)
+        ]
+
     }
 
     update(delta) {
@@ -53,29 +71,74 @@ class GameBottomMenu extends GameObject {
                     p.stroke(0);
                     switch (i){
                         case 0:
-                            p.fill(0, 100, 100);
+                            p.image(this.towerTextures[2], this.towerButtonsBodies[i].x, this.towerButtonsBodies[i].y)
                             break;
                         case 1:
-                            p.fill(100, 100, 0);
+                            p.image(this.towerTextures[3], this.towerButtonsBodies[i].x, this.towerButtonsBodies[i].y)
                             break;
                         case 2:
-                            p.fill(255, 0, 0);
+                            p.image(this.towerTextures[0], this.towerButtonsBodies[i].x, this.towerButtonsBodies[i].y)
                             break;
                         case 3:
-                            p.fill(0, 0, 255);
+                            p.image(this.towerTextures[1], this.towerButtonsBodies[i].x, this.towerButtonsBodies[i].y)
                             break;
                         case 4:
-                            p.fill(100);
+                            p.image(this.towerTextures[4], this.towerButtonsBodies[i].x, this.towerButtonsBodies[i].y)
                             break;
                     }
-                    p.rect(this.towerButtonsBodies[i].x, this.towerButtonsBodies[i].y, tileSize, tileSize);
+                    //p.rect(this.towerButtonsBodies[i].x, this.towerButtonsBodies[i].y, tileSize, tileSize);
                 }
+                p.fill(255, 255, 0);
+                p.text("Tower cost: 50", 710, 700);
             } else
             if (this.currentBuildType == 2){
                 for (let i=0; i < 3; i++){
-                    p.fill(255, 255, 255);
-                    p.rect(this.towerInsideButtonsBodies[i].x, this.towerInsideButtonsBodies[i].y, this.towerInsideButtonsBodies[i].w, this.towerInsideButtonsBodies[i].h);
+                    //p.fill(255, 255, 255);
+                    //p.rect(this.towerInsideButtonsBodies[i].x, this.towerInsideButtonsBodies[i].y, this.towerInsideButtonsBodies[i].w, this.towerInsideButtonsBodies[i].h);
+                    if (i == 0 && this.currentObject.towerComponent.upgradeStatsLevel < 5)
+                        if (this.currentObject.towerComponent.upgradeStatsCost <= mainGame.money)
+                            p.image(this.towerActionsTextures[i], this.towerInsideButtonsBodies[i].x, this.towerInsideButtonsBodies[i].y)
+                        else
+                            p.image(this.towerActionsTextures[i+3], this.towerInsideButtonsBodies[i].x, this.towerInsideButtonsBodies[i].y);
+                    if (i == 1 && this.currentObject.towerComponent.upgradeAbilityLevel < 5)
+                        if (this.currentObject.towerComponent.upgradeAbilityCost <= mainGame.money)
+                            p.image(this.towerActionsTextures[i], this.towerInsideButtonsBodies[i].x, this.towerInsideButtonsBodies[i].y)
+                        else
+                            p.image(this.towerActionsTextures[i+3], this.towerInsideButtonsBodies[i].x, this.towerInsideButtonsBodies[i].y);
+                    if (i == 2)
+                        p.image(this.towerActionsTextures[i], this.towerInsideButtonsBodies[i].x, this.towerInsideButtonsBodies[i].y)
+                    p.stroke(0)
+                    p.noFill()
+                    if (i == 0 && this.currentObject.towerComponent.upgradeStatsLevel < 5)
+                        p.rect(this.towerInsideButtonsBodies[i].x, this.towerInsideButtonsBodies[i].y, this.towerInsideButtonsBodies[i].w, this.towerInsideButtonsBodies[i].h);
+                    if (i == 1 && this.currentObject.towerComponent.upgradeAbilityLevel < 5)
+                        p.rect(this.towerInsideButtonsBodies[i].x, this.towerInsideButtonsBodies[i].y, this.towerInsideButtonsBodies[i].w, this.towerInsideButtonsBodies[i].h);
+                    if (i == 2)
+                        p.rect(this.towerInsideButtonsBodies[i].x, this.towerInsideButtonsBodies[i].y, this.towerInsideButtonsBodies[i].w, this.towerInsideButtonsBodies[i].h);
+                    p.fill(255, 255, 0);
+                    if (this.currentObject.towerComponent.upgradeStatsLevel < 5)
+                    p.text(this.currentObject.towerComponent.upgradeStatsCost+"", 620, 700);
+                    if (this.currentObject.towerComponent.upgradeAbilityLevel < 5)
+                    p.text(this.currentObject.towerComponent.upgradeAbilityCost+"", 680, 700);
+                    p.text(this.currentObject.towerComponent.towerCost/2+"", 740, 700);
+                }
+                p.fill(255, 255, 0);
+                p.text("Type: "+this.currentObject.towerComponent.attackType, 20, 625);
+                p.text("Stats Level: "+this.currentObject.towerComponent.upgradeStatsLevel, 20, 645);
+                p.text("Ability Level: "+this.currentObject.towerComponent.upgradeAbilityLevel, 20, 665);
+                p.text("Attack Damage: "+this.currentObject.towerComponent.attackDamage, 20, 685);
+                p.text("Attack Speed: "+(this.currentObject.towerComponent.attackSpeed.toFixed(2)), 20, 705);
 
+            }else
+            if (this.currentBuildType == 3){
+                if (this.currentMob != undefined){
+                    p.fill(255, 255, 0);
+                    p.text("Max HP: "+this.currentMob.maxHp, 20, 625);
+                    p.text("Fire Resist: "+this.currentMob.resist.resists["fire"].toFixed(2), 20, 640);
+                    p.text("Water Resist: "+this.currentMob.resist.resists["water"].toFixed(2), 20, 655);
+                    p.text("Earth Resist: "+this.currentMob.resist.resists["earth"].toFixed(2), 20, 670);
+                    p.text("Air Resist: "+this.currentMob.resist.resists["air"].toFixed(2), 20, 685);
+                    p.text("Shadow Resist: "+this.currentMob.resist.resists["shadow"].toFixed(2), 20, 700);
                 }
             }
             p.fill(255, 255, 0);
@@ -91,20 +154,30 @@ class GameBottomMenu extends GameObject {
         let y = this.game.p.mouseY;
         let tileSize = this.tilemap.tilemapContainerComponent.tileSize;
         if (y < 15*tileSize){
-            this.currJ = Math.floor(x/tileSize);
-            this.currI = Math.floor(y/tileSize);
-            let found = false;
-            for (let i=0; i < this.kids.length; i++){
-                if (this.kids[i].bodyComponent.x == this.currJ*tileSize &&
-                this.kids[i].bodyComponent.y == this.currI*tileSize){
-                    this.currentObject = this.kids[i];
-                    found = true;
+            let map = this.tilemap.tilemapContainerComponent.map;
+            this.currJ = Math.floor(x / tileSize);
+            this.currI = Math.floor(y / tileSize);
+            if (map[this.currI][this.currJ] == 0) {
+                let found = false;
+                for (let i = 0; i < this.kids.length; i++) {
+                    if (this.kids[i].bodyComponent.x == this.currJ * tileSize &&
+                        this.kids[i].bodyComponent.y == this.currI * tileSize) {
+                        this.currentObject = this.kids[i];
+                        found = true;
+                    }
+                }
+                if (!found)
+                    this.currentBuildType = 1;
+                else
+                    this.currentBuildType = 2;
+            } else {
+                for (let mob of this.mobs){
+                    if (mob.bodyComponent.mouseHover(x, y)){
+                        this.currentMob = mob;
+                        this.currentBuildType = 3;
+                    }
                 }
             }
-            if (!found)
-                this.currentBuildType = 1;
-            else
-                this.currentBuildType = 2;
         } else {
             if (this.currentBuildType == 0) { //nothing
 

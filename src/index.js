@@ -20,7 +20,12 @@ const s = (p) => {
         "assets/map/Tileset.png",
         "assets/ui/BottomMenu.png",
         "assets/mobs/MobsNew.png",
-        "assets/mobs/MobFire0.png"
+        "assets/mobs/Bosses.png",
+        "assets/towers/Towers.png",
+        "assets/towers/TowerActions.png",
+        "assets/towers/Bullets.png",
+        "assets/map/MapFull2.png",
+        "assets/MenuPoster.jpg"
         
     ];
     p.soundsArray = ["assets/Jump3.wav"];
@@ -60,7 +65,7 @@ const s = (p) => {
 
         game = new Game(p);
         window.mainGame = game;
-        game.setState(new GameState(game));
+        game.setState(new MenuState(game));
     
     };
     
@@ -77,6 +82,11 @@ const s = (p) => {
         lastTime = currTime;
     
     };
+
+    p.keyPressed = function(){
+        game.keyPressed();
+
+    }
 
     p.mouseClicked = function(){
         game.mouseClicked();

@@ -9,7 +9,7 @@ class HPRenderComponent extends GameComponent {
     }
 
     drawUpper(index){
-        if (index == 1) {
+        if (index == 3) {
             let hp = this.host.hp;
 
             this.host.game.p.noStroke();

@@ -1,4 +1,5 @@
 import GameComponent from "../GameComponent";
+import EndState from "../../States/EndState";
 
 class MobMovingComponent extends GameComponent {
 
@@ -59,6 +60,10 @@ class MobMovingComponent extends GameComponent {
             }
         } else {
             this.host.removeFromParent();
+            mainGame.lifes--;
+            if (mainGame.lifes == 0){
+                mainGame.setState(new EndState(mainGame, false));
+            }
         }        
 
     }

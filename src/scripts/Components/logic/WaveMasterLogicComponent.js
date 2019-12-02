@@ -1,5 +1,6 @@
 import GameComponent from "../GameComponent";
 import Mob from "../../Objects/Game/Mobs/Mob";
+import EndState from "../../States/EndState";
 
 class WaveMasterLogicComponent extends GameComponent {
 
@@ -9,7 +10,7 @@ class WaveMasterLogicComponent extends GameComponent {
         this.waves = [];
         this.currentWaveIndex = 0;
         let c = host.game.constants;
-        
+
         this.storeWave(c.MOB_FIRE_0, 15, 0.6);
         this.storeWave(c.MOB_EARTH_0, 15, 0.5);
         this.storeWave(c.MOB_WATER_0, 15, 0.7);
@@ -135,7 +136,7 @@ class WaveMasterLogicComponent extends GameComponent {
         let size = this.tilemap.tilemapContainerComponent.tileSize;
         let test = new MobClass(this.host.game, 17*size, -size, size, this.route);
         this.host.addChild(test);
-        console.log(this.waveId);
+        //console.log(this.waveId);
         
     }
 
@@ -146,9 +147,12 @@ class WaveMasterLogicComponent extends GameComponent {
                 this.timerWaveStart = 0;
                 this.spawningState = 1;
                 let waveObject = this.waves[this.currentWaveIndex++];
-                this.currentWaveToSpawn = waveObject.a;
-                this.timeToSpawnMob = waveObject.time;
-
+                try {
+                    this.currentWaveToSpawn = waveObject.a;
+                    this.timeToSpawnMob = waveObject.time;
+                } catch (e) {
+                    mainGame.setState(new EndState(mainGame, true));
+                }
             }
         } else 
         if (this.spawningState == 1){

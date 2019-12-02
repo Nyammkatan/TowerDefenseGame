@@ -77,6 +77,14 @@ class Mob extends GameObject {
             this.hp -= damage;
         }
     }
+
+    drawUpper(index){
+        super.drawUpper(index);
+        if (index == 1){
+           this.draw();
+        }
+    }
+
 }
 
 export default Mob;

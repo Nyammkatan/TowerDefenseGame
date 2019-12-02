@@ -13,19 +13,19 @@ class Button extends GameObject {
         this.addComponent(this.bodyComponent);
 
         let buttonImage = game.p.gimages["assets/ui/buttons_menu.png"];
-        this.buttonImage_idle = game.p.crop(buttonImage, 0, 73, 167, 73);
-        this.buttonImage_hover = game.p.crop(buttonImage, 0, 0, 167, 73);
+        this.buttonImage_idle = buttonImage.get(0, 73, 167, 73);
+        this.buttonImage_hover = buttonImage.get(0, 0, 167, 73);
 
         this.renderComponent = new RenderComponent(this, this.bodyComponent, this.buttonImage_idle);
         this.renderComponent.update = (delta)=> {
-            if (this.bodyComponent.mouseHover()){
+            if (this.bodyComponent.mainMouseHover()){
                 this.renderComponent.image = this.buttonImage_hover;
             } else {
                 this.renderComponent.image = this.buttonImage_idle;
             }
         }
         this.renderComponent.mousePressed = ()=>{
-            if (this.bodyComponent.mouseHover())
+            if (this.bodyComponent.mainMouseHover())
                 onAction();
         }
         this.addComponent(this.renderComponent);
