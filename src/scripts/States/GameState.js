@@ -39,7 +39,7 @@ class GameState extends State {
     draw() {
         super.draw();
         mainGame.p.fill(255, 255, 0);
-        mainGame.p.text("Lifes: "+mainGame.lifes, 15, 25);
+        mainGame.p.text("Lives: "+mainGame.lifes, 15, 25);
 
     }
 
