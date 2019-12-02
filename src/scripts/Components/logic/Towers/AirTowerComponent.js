@@ -13,12 +13,16 @@ class AirTowerComponent extends TowerComponent {
         this.timerAura += delta;
         if (this.timerAura >= this.auraTime){
             this.timerAura -= this.auraTime;
-            let allTowers = mainGame.state.gameMenuBottom.kids;
-            for (let i=0; i < allTowers.length; i++){
-                if (allTowers[i].towerComponent.attackType != "air"){
-                    if (allTowers[i].bodyComponent.distanceTo(this.host.bodyComponent) < 100)
-                        allTowers[i].buffsComponent.tryBuff("speed", this.upgradeAbilityLevel);
+            try {
+                let allTowers = mainGame.state.gameMenuBottom.kids;
+                for (let i = 0; i < allTowers.length; i++) {
+                    if (allTowers[i].towerComponent.attackType != "air") {
+                        if (allTowers[i].bodyComponent.distanceTo(this.host.bodyComponent) < 100)
+                            allTowers[i].buffsComponent.tryBuff("speed", this.upgradeAbilityLevel);
+                    }
                 }
+            } catch (e) {
+                console.log("found and fixed error");
             }
         }
 
