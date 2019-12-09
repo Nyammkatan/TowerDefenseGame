@@ -6,8 +6,9 @@ import AnimationUtils from "../../../../Components/render/AnimationUtils";
 
 class MobFire4 extends Mob {
     constructor(game, x, y, tileSize, route){
-        super(game, x, y, 60, tileSize, route, 100, new FireResistComponent(null), 30000);
+        super(game, x, y, 60, tileSize, route, 100, new FireResistComponent(null), 15000000);
         this.resist.host = this;
+        this.bounty = 125;
         this.animationController = new AnimationControllerComponent(this);
         this.animationController.addAnimation("down", new Animation(
             AnimationUtils.getFrames("assets/mobs/Bosses.png", 4, 0, 160, 3),

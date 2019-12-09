@@ -6,8 +6,9 @@ import AnimationUtils from "../../../../Components/render/AnimationUtils";
 
 class MobWater4 extends Mob {
     constructor(game, x, y, tileSize, route){
-        super(game, x, y, 30, tileSize, route, 110, new WaterResistComponent(null), 2300);
+        super(game, x, y, 30, tileSize, route, 110, new WaterResistComponent(null), 300000);
         this.resist.host = this;
+        this.bounty = 2400;
         this.animationController = new AnimationControllerComponent(this);
         this.animationController.addAnimation("down", new Animation(
             AnimationUtils.getFrames("assets/mobs/MobsNew.png", 11, 0, 80, 3),

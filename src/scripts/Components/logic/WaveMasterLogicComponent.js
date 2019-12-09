@@ -11,37 +11,37 @@ class WaveMasterLogicComponent extends GameComponent {
         this.currentWaveIndex = 0;
         let c = host.game.constants;
 
-        this.storeWave(c.MOB_FIRE_0, 15, 0.6);
-        this.storeWave(c.MOB_EARTH_0, 15, 0.5);
-        this.storeWave(c.MOB_WATER_0, 15, 0.7);
+        this.storeWave(c.MOB_FIRE_0, 15, 1);
+        this.storeWave(c.MOB_EARTH_0, 15, 1);
+        this.storeWave(c.MOB_WATER_0, 15, 1);
         this.storeWave(c.MOB_SHADOW_0, 15, 0.8);
-        this.storeWave(c.MOB_AIR_0, 2, 1);
+        this.storeWave(c.MOB_AIR_0, 2, 0.7);
         this.storeWave(c.MOB_EARTH_1, 15, 1);
         this.storeWave(c.MOB_WATER_1, 15, 1);
-        this.storeWave(c.MOB_AIR_1, 15, 1);
+        this.storeWave(c.MOB_AIR_1, 15, 0.7);
         this.storeWave(c.MOB_FIRE_1, 15, 1);
-        this.storeWave(c.MOB_SHADOW_1, 2, 1);
-        this.storeWave(c.MOB_FIRE_2, 15, 0.7);
-        this.storeWave(c.MOB_WATER_2, 15, 0.7);
-        this.storeWave(c.MOB_SHADOW_2, 15, 0.7);
-        this.storeWave(c.MOB_AIR_2, 15, 1);
-        this.storeWave(c.MOB_EARTH_2, 2, 0.5);
-        this.storeWave(c.MOB_SHADOW_3, 15, 1);
+        this.storeWave(c.MOB_SHADOW_1, 2, 1.3);
+        this.storeWave(c.MOB_FIRE_2, 15, 1);
+        this.storeWave(c.MOB_WATER_2, 15, 1);
+        this.storeWave(c.MOB_SHADOW_2, 15, 0.8);
+        this.storeWave(c.MOB_AIR_2, 15, 0.7);
+        this.storeWave(c.MOB_EARTH_2, 2, 1.8);
+        this.storeWave(c.MOB_SHADOW_3, 15, 0.8);
         this.storeWave(c.MOB_EARTH_3, 15, 1);
         this.storeWave(c.MOB_FIRE_3, 15, 1);
-        this.storeWave(c.MOB_AIR_3, 15, 1);
-        this.storeWave(c.MOB_WATER_3, 2, 1);
+        this.storeWave(c.MOB_AIR_3, 15, 0.7);
+        this.storeWave(c.MOB_WATER_3, 2, 1.5);
         this.storeWave(c.MOB_EARTH_4, 15, 1);
-        this.storeWave(c.MOB_SHADOW_4, 15, 1);
+        this.storeWave(c.MOB_SHADOW_4, 15, 0.8);
         this.storeWave(c.MOB_WATER_4, 15, 1);
-        this.storeWave(c.MOB_AIR_4, 15, 1);
+        this.storeWave(c.MOB_AIR_4, 15, 0.7);
         this.storeWave(c.MOB_FIRE_4, 1, 1);
         
 
         this.spawningState = 0; //0 - wait | 1 - spawning
 
-        this.timerWaveStart = 0;
-        this.timeToStartWave = 1;
+        this.timerWaveStart = -5;
+        this.timeToStartWave = 2;
 
         this.timerMobSpawn = 0;
         this.timeToSpawnMob = 1.2;

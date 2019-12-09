@@ -6,7 +6,7 @@ import AnimationUtils from "../../../../Components/render/AnimationUtils";
 
 class MobAir2 extends Mob {
     constructor(game, x, y, tileSize, route){
-        super(game, x, y, 30, tileSize, route, 140, new AirResistComponent(null), 10000);
+        super(game, x, y, 30, tileSize, route, 140, new AirResistComponent(null), 6500);
         this.resist.host = this;
         this.bounty = 125;
         this.animationController = new AnimationControllerComponent(this);
